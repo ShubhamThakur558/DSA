@@ -24,12 +24,8 @@ class Solution {
                         count=0;
                     }
                 }
-            if(boq>=m){
-                high = mid-1;
-            }
-            else{
-                low = mid+1;
-            }
+            if(boq>=m) high = mid-1;
+            else low = mid+1;
         }
         return low;
     }
