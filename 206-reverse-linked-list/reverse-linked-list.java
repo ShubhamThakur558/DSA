@@ -10,6 +10,7 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+        if(head==null)return head;
         ListNode curr = head;
         ListNode next = null;
         ListNode prev = null;
@@ -17,7 +18,9 @@ class Solution {
             next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = next;        }
-            return prev;
+            curr = next;
+    
+        }
+        return prev;
     }
 }
