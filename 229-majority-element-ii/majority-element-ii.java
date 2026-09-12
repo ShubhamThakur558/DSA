@@ -1,38 +1,43 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         int n = nums.length;
-        int count1 = 0, count2 =0;
-        int ele1= 0,ele2=0;
-        for(int i = 0;i<n;i++){
-            if(count1==0 && nums[i]!=ele2){
-                count1 =1;
-                ele1 = nums[i];
-            }
-            else if (count2 == 0 && nums[i]!= ele1){
-                count2 = 1;
-                ele2 = nums[i];
-            }
-            else if(nums[i]==ele1){
-                count1++;
-            }
-            else if (nums[i]== ele2){
-                count2++;
-            }
-            else{
-                count1--;
-                count2--;
-            }
+        int count1 = 0;
+        int count2 = 0;
+        int maj1= 0;
+        int maj2= 0;
+    for(int i=0;i<n;i++){
+        if(nums[i]==maj1){
+            count1++;
         }
-            count1 = 0;
-            count2 = 0;
-            for( int i =0;i<n;i++){
-                if(nums[i]==ele1) count1++;
-                else if(nums[i]==ele2) count2++;
-            }
-            List <Integer> ans = new ArrayList<>();
-            if(count1>n/3)ans.add(ele1);
-            if(count2>n/3)ans.add(ele2);
-            return ans ;
-        
+        else if(nums[i]==maj2){
+            count2++;
+        }
+        else if(count1==0){
+            maj1=nums[i];
+            count1=1;
+        }
+        else if(count2==0){
+            maj2=nums[i];
+            count2=1;
+        }
+        else {
+            count1--;
+            count2--;
+        }
+    }
+    List<Integer> ans = new  ArrayList<>();
+     int freq1=0;
+     int freq2=0;
+     for(int i=0;i<n;i++){
+        if(nums[i]==maj1){
+            freq1++;
+        }
+        else if(nums[i]==maj2){
+            freq2++;
+        }
+     }
+     if(freq1>n/3)ans.add(maj1);
+     if(freq2>n/3)ans.add(maj2);
+     return ans;     
     }
 }
